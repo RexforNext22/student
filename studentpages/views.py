@@ -58,8 +58,15 @@ def savePageView(request):
 
 
 
-
-        # print(oArticleOfClothing)
         oStudent.save()
 
     return render(request, 'studentpages/index.html')
+
+def showSingleStudent(request, id):
+
+    data = Student.objects.get(id=id)
+    context = {
+        "Student": data,
+    }
+
+    return render(request, 'studentpages/showSingleStudent.html', context)

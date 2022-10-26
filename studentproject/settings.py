@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'studentproject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'Students',
+        'NAME': 'Student',
         'USER': 'admin',
         'PASSWORD': 'Ashlyn22!',
         'HOST': 'isemployeetracker.cluster-ce1uadibrk0d.us-east-2.rds.amazonaws.com',

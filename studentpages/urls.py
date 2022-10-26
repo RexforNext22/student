@@ -5,6 +5,7 @@ from .views import libraryPageView
 from .views import newPageView
 from .views import aboutPageView
 from .views import savePageView
+from .views import showSingleStudent
 
 
 
@@ -15,5 +16,6 @@ urlpatterns = [
     path("library/", libraryPageView, name="library"),
     path("new/", newPageView, name="new"),
     path("about/", aboutPageView, name="about"),
-    path("save/", savePageView, name="save")                 
+    path("save/", savePageView, name="save"),
+    path("showSingleStudent/<int:id>/", showSingleStudent, name="showSingleStudent")                 
         ]        

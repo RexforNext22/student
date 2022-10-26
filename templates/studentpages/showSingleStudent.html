@@ -1,4 +1,4 @@
-{% load static %} {% block content %}
+{% load static %}{% block content %}
  <head>
     <style>
         #bg{
@@ -78,15 +78,23 @@
   </nav>
 
   <br><br><br><br><br><br><br><br><br><br><br>
-  <h1 style="color:#fff; text-decoration: none;">Student Library</h1>
 
-  {% for Student in Student %}
+  First Name: {{ Student.first_name }} <br />
+  Last Name: {{ Student.last_name }} <br />
+  International: {{ Student.bInternational }} <br />
+  Gender: {{ Student.gender }} <br />
+  Email: {{ Student.email }} <br />
+  Expected Hours: {{ Student.fExpectedHours }} <br />
+  Semester: {{ Student.sSemester }} <br />
+  Year: {{ Student.iYear }} <br />
+  International: {{ Student.bInternational }} <br />
+  International: {{ Student.bInternational }} <br />
+  International: {{ Student.bInternational }} <br />
 
-  <p> {{ Student.id }} {{ Student.first_name }} {{ Student.last_name }}</p>
-  <a class="button" href="{% url 'showSingleStudent' id=Student.id %}">View</a>
-  {% endfor %}
+
 
 </section>
+
 <script>
     $("nav ul li").click(function(){
     var xcoord = $(this).data("xcoord");
@@ -98,5 +106,4 @@
   });
 </script>
  </body>
-
  {%endblock%}

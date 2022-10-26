@@ -2,11 +2,12 @@ from django.db import models
 
 # Create your models here.
 class Student(models.Model):
-    first_name = models.CharField(max_length=30, unique=True)
-    last_name = models.CharField(max_length=30, unique=True)
-    bInternational = models.BooleanField(max_length=20, unique=True)
-    gender = models.CharField(max_length=1, unique=True)
-    email = models.CharField(max_length=30, unique=True)
+    id = models.AutoField(primary_key=True)
+    first_name = models.CharField(max_length=30)
+    last_name = models.CharField(max_length=30)
+    bInternational = models.BooleanField(max_length=20)
+    gender = models.CharField(max_length=1)
+    email = models.CharField(max_length=30)
     fExpectedHours = models.FloatField(max_length=4)
     sSemester = models.CharField(max_length=10)
     iYear = models.IntegerField()
@@ -35,7 +36,7 @@ class Student(models.Model):
     sBYUName = models.CharField(max_length=30)
 
     class Meta:
-        db_table = "RanktShirts_material"
+        db_table = "Student"
 
     def __str__(self):
         return (self.material_name)
