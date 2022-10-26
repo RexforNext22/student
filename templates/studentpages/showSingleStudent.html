@@ -111,6 +111,13 @@
   BYU Name: {{ Student.sBYUName }} <br />
 
 
+  <a
+    class="button"
+    style="float: right"
+    href="{% url 'edit' id=Student.id%}"
+    >Edit</a><br><br>
+
+  <a class="button" style="float: right" onclick="alert('Successfully Deleted')" href="{% url 'delete' id=Student.id%}">Delete</a>
 
   
 

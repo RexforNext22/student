@@ -1,0 +1,397 @@
+{% load static %} {% block content %}
+ <head>
+    <style>
+        #bg{
+            position:fixed;
+            left:0;
+            top:0;
+            width:100%;
+            height:100%;
+          background: #38a8d1;
+          background: -moz-linear-gradient(top,  #38a8d1 0%, #34bc9a 36%, #34bc9a 57%, #8645f7 100%);
+          background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#38a8d1), color-stop(36%,#34bc9a), color-stop(57%,#34bc9a), color-stop(100%,#8645f7));
+          background: -webkit-linear-gradient(top,  #38a8d1 0%,#34bc9a 36%,#34bc9a 57%,#8645f7 100%);
+          background: -o-linear-gradient(top,  #38a8d1 0%,#34bc9a 36%,#34bc9a 57%,#8645f7 100%);
+          background: -ms-linear-gradient(top,  #38a8d1 0%,#34bc9a 36%,#34bc9a 57%,#8645f7 100%);
+          background: linear-gradient(to bottom,  #38a8d1 0%,#34bc9a 36%,#34bc9a 57%,#8645f7 100%);
+          filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#38a8d1', endColorstr='#8645f7',GradientType=0 );
+          }
+          
+          section{
+            position:relative;
+            width:640px;
+            margin:50px auto;
+          }
+          nav{
+            width:100%;
+          }
+          nav ul li{
+            display:inline-block;
+            list-style:none;
+            width:160px;
+            text-align:center;
+            font-family:Helvetica, sans-serif;
+            border: 1px dashed rgba(255,255,255, 0);
+            color:#fff;
+            padding:10px 0 10px 0;
+            margin:-1px -5px -1px -1px;
+            cursor:pointer;
+            transition:all .2s;
+            -webkit-transition:all .2s;
+          }
+          nav ul li:hover{
+            /*border:1px dashed #fff;*/
+            background:rgba(255,255,255,.1);
+          }
+          nav ul{
+            border: 1px solid #fff;
+            position:absolute;
+            width:100%;
+            padding:0;
+            z-index:100;
+          }
+          nav div{
+            position:absolute;
+            left:0;
+            top:16px;
+
+            width:162px;
+            height:40px;
+            z-index:99;
+          }
+          .active{
+            color:rgba(55, 186, 177, 1);
+          }
+    </style>
+ </head>
+ <body>
+    <div id="bg"></div>
+<section>
+  <nav>
+    <div></div>
+    <ul>
+      <li><a style="color:#fff; text-decoration: none;" href="{%url 'index'%}">Home</a></li>
+      <li><a style="color:#fff; text-decoration: none;" href="{%url 'library'%}">Library</a></li>
+      <li><a style="color:#fff; text-decoration: none;" href="{%url 'new'%}">New</a></li>
+      <li><a style="color:#fff; text-decoration: none;" href="{%url 'about'%}">About</a></li>
+    </ul>
+  </nav>
+
+  <br><br><br><br><br><br><br><br><br><br><br>
+  <h1 style="color:#fff; text-decoration: none;">Update Record</h1>
+
+
+  <form id="contact-form" class="row contact-form no-gutter" style="padding: 2rem 2rem 2rem 2rem" action="{% url 'update' id=Student.id %}" method="POST"> {% csrf_token %}
+
+    <inputtype="hidden" id="id" value={{ Student.id }}>
+
+    <div class="col-xs-12 col-sm-6">
+        <div class="input-field name">
+            <span class= "input-icon" id="first_name">First Name</span>
+            <input type="text" class="form-control" name="first_name" placeholder="First Name" autofocus value="{{ Student.first_name }}">
+        </div>
+    </div><br>
+
+    <div class="col-xs-12 col-sm-6">
+        <div class="input-field name">
+            <span class= "input-icon" id="last_name">Last Name</span>
+            <input type="text" class="form-control" name="last_name" placeholder="Last Name" value="{{ Student.last_name }}">
+        </div>
+    </div><br>
+
+    <div class="col-xs-12 col-sm-6">
+        <div class="input-field name">
+            <span class= "input-icon" id="bInternational">Is this an international student? (True/False)</span>
+            <input type="text" class="form-control" name="bInternational" placeholder="" value="{{ Student.bInternational }}">
+        </div>
+    </div><br>
+
+    <div class="col-xs-12 col-sm-6">
+        <div class="input-field name">
+            <span class= "input-icon" id="gender">Gender (M/F)</span>
+            <input type="text" class="form-control" name="gender" placeholder="Gender" value="{{ Student.gender }}">
+        </div>
+    </div><br>
+
+    <div class="col-xs-12 col-sm-6">
+        <div class="input-field name">
+            <span class= "input-icon" id="email">Email</span>
+            <input type="text" class="form-control" name="email" placeholder="Email" value="{{ Student.email }}">
+        </div>
+    </div><br>
+
+    <div class="col-xs-12 col-sm-6">
+        <div class="input-field name">
+            <span class= "input-icon" id="sPhone">Phone</span>
+            <input type="text" class="form-control" name="sPhone" placeholder="Phone" value="{{ Student.sPhone }}">
+        </div>
+    </div><br>
+
+    <div class="col-xs-12 col-sm-6">
+        <div class="input-field name">
+            <span class= "input-icon" id="fExpectedHours">How many hours will the student expect to work?</span>
+            <input type="text" class="form-control" name="fExpectedHours" placeholder="Hours" value="{{ Student.fExpectedHours }}">
+        </div>
+    </div><br>
+
+    <div class="col-xs-12 col-sm-6">
+        <div class="input-field name">
+            <span class= "input-icon" id="sSemester">Semester</span>
+            <select class="form-control" name="sSemester" id="sSemester">
+                <option value="{{ Student.sSemester }}" selected>{{ Student.sSemester }}</option>
+                <option value="">Semester</option>
+                <option value="Fall">Fall</option>
+                <option value="Winter">Winter</option>
+                <option value="Spring">Spring</option>
+                <option value="Summer">Summer</option>
+            </select>
+        </div>
+    </div><br>
+
+    <div class="col-xs-12 col-sm-6">
+        <div class="input-field name">
+            <span class= "input-icon" id="iYear">Year</span>
+            <select class="form-control" name="iYear" id="iYear">
+                <option value="{{ Student.iYear }}" selected>{{ Student.iYear }}</option>
+                <option value="">Year</option>
+                <option value="2022">2022</option>
+                <option value="2021">2021</option>
+                <option value="2020">2020</option>
+                <option value="2019">2019</option>
+            </select>
+        </div>
+    </div><br>
+
+    <div class="col-xs-12 col-sm-6">
+        <div class="input-field name">
+            <span class= "input-icon" id="sBYUID">BYU ID</span>
+            <input type="text" class="form-control" name="sBYUID" placeholder="BYU ID" value="{{ Student.sBYUID }}">
+        </div>
+    </div><br>
+
+    <div class="col-xs-12 col-sm-6">
+        <div class="input-field name">
+            <span class= "input-icon" id="sPositionType">Position Type</span>
+            <select class="form-control" name="sPositionType" id="sPositionType">
+                <option value="{{ Student.sPositionType }}" selected>{{ Student.sPositionType }}</option>
+                <option value="">Type</option>
+                <option value="RA">RA</option>
+                <option value="TA">TA</option>
+                <option value="Office">Office</option>
+                <option value="Student Instructor">Student Instructor</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+    </div><br>
+
+    <div class="col-xs-12 col-sm-6">
+        <div class="input-field name">
+            <span class= "input-icon" id="sClassCode">Class Code</span>
+            <input type="text" class="form-control" name="sClassCode" placeholder="Class Code" value="{{ Student.sClassCode }}">
+        </div>
+    </div><br>
+
+    <div class="col-xs-12 col-sm-6">
+        <div class="input-field name">
+            <span class= "input-icon" id="iEmployeeRecord">Employee Record</span>
+            <select class="form-control" name="iEmployeeRecord" id="iEmployeeRecord">
+                <option value="{{ Student.iEmployeeRecord }}" selected>{{ Student.iEmployeeRecord }}</option>
+                <option value="">Record</option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+        </div>
+    </div><br>
+
+    <div class="col-xs-12 col-sm-6">
+        <div class="input-field name">
+            <span class= "input-icon" id="sSupervisior">Supervisior</span>
+            <select class="form-control" name="sSupervisior" id="sSupervisior">
+                <option value="{{ Student.sSupervisior }}" selected>{{ Student.sSupervisior }}</option>
+                <option value="">Name</option>
+                <option value="Ryan Pinkney">Ryan Pinkney</option>
+                <option value="Greg Anderson">Greg Anderson</option>
+                <option value="Spencer Hilton">Spencer Hilton</option>
+                <option value="Jeff">Jeff</option>
+            </select>
+        </div>
+    </div><br>
+
+    <div class="col-xs-12 col-sm-6">
+        <div class="input-field name">
+            <span class= "input-icon" id="dDate">Hire Date</span>
+            <input type="date" class="form-control" name="dDate" placeholder="Hire Date" value="{{ Student.dDate }}">
+        </div>
+    </div><br>
+
+    <div class="col-xs-12 col-sm-6">
+        <div class="input-field name">
+            <span class= "input-icon" id="fPayRate">Pay Rate</span>
+            <input type="text" class="form-control" name="fPayRate" placeholder="Pay Rate" value="{{ Student.fPayRate }}">
+        </div>
+    </div><br>
+
+    <div class="col-xs-12 col-sm-6">
+        <div class="input-field name">
+            <span class= "input-icon" id="dLastPayIncrease">Date of Last Pay Increase</span>
+            <input type="date" class="form-control" name="dLastPayIncrease" placeholder="\Date" value="{{ Student.dLastPayIncrease }}">
+        </div>
+    </div><br>
+
+    <div class="col-xs-12 col-sm-6">
+        <div class="input-field name">
+            <span class= "input-icon" id="fIncreaseAmount">Increase Amount</span>
+            <input type="text" class="form-control" name="fIncreaseAmount" placeholder="Increase Amount" value="{{ Student.fIncreaseAmount }}">
+        </div>
+    </div><br>
+
+    <div class="col-xs-12 col-sm-6">
+        <div class="input-field name">
+            <span class= "input-icon" id="dIncreaseInput">Date of Increase Input</span>
+            <input type="date" class="form-control" name="dIncreaseInput" placeholder="Date" value="{{ Student.dIncreaseInput }}">
+        </div>
+    </div><br>
+
+    <div class="col-xs-12 col-sm-6">
+        <div class="input-field name">
+            <span class= "input-icon" id="sYearInProgram">Year in Projgram</span>
+            <select class="form-control" name="sYearInProgram" id="sYearInProgram">
+                <option value="{{ Student.sYearInProgram }}" selected>{{ Student.sYearInProgram }}</option>
+                <option value="">Year</option>
+                <option value="MISM Year 1">MISM</option>
+                <option value="MBA">MBA</option>
+                <option value="MPA">MPA</option>
+                <option value="Macc">Macc</option>
+            </select>
+        </div>
+    </div><br>
+
+    <div class="col-xs-12 col-sm-6">
+        <div class="input-field name">
+            <span class= "input-icon" id="bPayGradTuition">Do you pay graduate tuition? (True/False)</span>
+            <input type="text" class="form-control" name="bPayGradTuition" placeholder="" value="{{ Student.bPayGradTuition }}">
+        </div>
+    </div><br>
+
+    <div class="col-xs-12 col-sm-6">
+        <div class="input-field name">
+            <span class= "input-icon" id="bNameChangeCompleted">Name change completed? (True/False)</span>
+            <input type="text" class="form-control" name="bNameChangeCompleted" placeholder="" value="{{ Student.bNameChangeCompleted }}">
+        </div>
+    </div><br>
+
+    <div class="col-xs-12 col-sm-6">
+        <div class="input-field name">
+            <label class= "input-icon" id="sNotes" for="sNotes">Notes</label>
+            <textarea class="form-control" name="sNotes" rows="4" cols="50">{{ Student.sNotes }}</textarea>
+        </div>
+    </div><br>
+
+    <div class="col-xs-12 col-sm-6">
+        <div class="input-field name">
+            <span class= "input-icon" id="bTerminated">Terminated (True/False)</span>
+            <input type="text" class="form-control" name="bTerminated" placeholder="" value="{{ Student.bTerminated }}">
+        </div>
+    </div><br>
+
+    <div class="col-xs-12 col-sm-6">
+        <div class="input-field name">
+            <span class= "input-icon" id="dTerminationDate">Termination Date</span>
+            <input type="date" class="form-control" name="dTerminationDate" placeholder="" value="{{ Student.dTerminationDate }}">
+        </div>
+    </div><br>
+
+    <div class="col-xs-12 col-sm-6">
+        <div class="input-field name">
+            <span class= "input-icon" id="bQualtricsSurveySent">Was the Qualtrics survey sent? (True/False)</span>
+            <input type="text" class="form-control" name="bQualtricsSurveySent" placeholder="" value="{{ Student.bQualtricsSurveySent }}">
+        </div>
+    </div><br>
+
+    <div class="col-xs-12 col-sm-6">
+        <div class="input-field name">
+            <span class= "input-icon" id="bSubmittedEForm">Have they submitted the E-Form? (True/False)</span>
+            <input type="text" class="form-control" name="bSubmittedEForm" placeholder="" value="{{ Student.first_name }}">
+        </div>
+    </div><br>
+
+    <div class="col-xs-12 col-sm-6">
+        <div class="input-field name">
+            <span class= "input-icon" id="dEFormSubmitted">E-Form Submission Date</span>
+            <input type="date" class="form-control" name="dEFormSubmitted" placeholder="" value="{{ Student.dEFormSubmitted }}">
+        </div>
+    </div><br>
+
+    <div class="col-xs-12 col-sm-6">
+        <div class="input-field name">
+            <span class= "input-icon" id="bAuthroizedToWork">Authorized to work? (True/False)</span>
+            <input type="text" class="form-control" name="bAuthroizedToWork" placeholder="" value="{{ Student.bAuthroizedToWork }}">
+        </div>
+    </div><br>
+
+    <div class="col-xs-12 col-sm-6">
+        <div class="input-field name">
+            <span class= "input-icon" id="dAuthorizationWorkEmailSent">Date that email was sent</span>
+            <input type="date" class="form-control" name="dAuthorizationWorkEmailSent" placeholder="" value="{{ Student.dAuthorizationWorkEmailSent }}">
+        </div>
+    </div><br>
+
+    <div class="col-xs-12 col-sm-6">
+        <div class="input-field name">
+            <span class= "input-icon" id="sBYUName">Name of BYU records</span>
+            <input type="text" class="form-control" name="sBYUName" placeholder="" value="{{ Student.sBYUName }}">
+        </div>
+    </div><br>
+
+    
+
+
+
+    <div class="col-xs-12 col-sm-6">
+        <div class="input-field name">
+            <span class="btn-border">
+                <button type="submit" class="btn btn-primary btn-custom-border text-uppercase" onclick="alert('Student updated!'); location.href='index.html'">Update</button>
+                
+            </span>
+        </div>
+
+
+    </form>
+    <br><br><br>
+    <a style="color:#fff; text-decoration: none;" href="{%url 'index'%}">Back</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</section>
+
+<script>
+    $("nav ul li").click(function(){
+    var xcoord = $(this).data("xcoord");
+    
+    $("nav div").stop().animate({marginLeft:xcoord}, 500, "easeInOutExpo");
+    $(this).addClass("active");
+    $("nav ul li").not(this).removeClass("active");
+    
+  });
+</script>
+ </body>
+ {%endblock%}
