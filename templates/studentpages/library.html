@@ -1,4 +1,4 @@
-{% load static %}
+{% load static %} {% block content %}
  <head>
     <style>
         #bg{
@@ -78,9 +78,15 @@
   </nav>
 
   <br><br><br><br><br><br><br><br><br><br><br>
-  Library
-</section>
+  <h1 style="color:#fff; text-decoration: none;">Student Library</h1>
 
+  {% for Student in Student %}
+
+  <p> {{ Student.first_name }} {{ Student.last_name }}</p>
+  
+  {% endfor %}
+
+</section>
 <script>
     $("nav ul li").click(function(){
     var xcoord = $(this).data("xcoord");
@@ -92,3 +98,5 @@
   });
 </script>
  </body>
+
+ {%endblock%}

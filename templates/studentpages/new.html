@@ -1,4 +1,4 @@
-{% load static %}
+{% load static %} {% block content %}
  <head>
     <style>
         #bg{
@@ -78,7 +78,110 @@
   </nav>
 
   <br><br><br><br><br><br><br><br><br><br><br>
-  New item
+  <h1 style="color:#fff; text-decoration: none;">Add a New Student</h1>
+
+
+  <form id="contact-form" class="row contact-form no-gutter" style="padding: 2rem 2rem 2rem 2rem" action="{% url 'save' %}" method="POST"> {% csrf_token %}
+
+    <div class="col-xs-12 col-sm-6">
+        <div class="input-field name">
+            <span class= "input-icon" id="first_name">First Name</span>
+            <input type="text" class="form-control" name="first_name" placeholder="First Name" autofocus>
+        </div>
+    </div><br>
+
+    <div class="col-xs-12 col-sm-6">
+        <div class="input-field name">
+            <span class= "input-icon" id="last_name">Last Name</span>
+            <input type="text" class="form-control" name="last_name" placeholder="Last Name">
+        </div>
+    </div><br>
+
+    <div class="col-xs-12 col-sm-6">
+        <div class="input-field name">
+            <span class= "input-icon" id="bInternational">Is this an international student? (True/False)</span>
+            <input type="text" class="form-control" name="bInternational" placeholder="">
+        </div>
+    </div><br>
+
+    <div class="col-xs-12 col-sm-6">
+        <div class="input-field name">
+            <span class= "input-icon" id="gender">Gender (M/F)</span>
+            <input type="text" class="form-control" name="gender" placeholder="Gender">
+        </div>
+    </div><br>
+
+    <div class="col-xs-12 col-sm-6">
+        <div class="input-field name">
+            <span class= "input-icon" id="email">Email</span>
+            <input type="text" class="form-control" name="email" placeholder="Email">
+        </div>
+    </div><br>
+
+    <div class="col-xs-12 col-sm-6">
+        <div class="input-field name">
+            <span class= "input-icon" id="fExpectedHours">How many hours will the student expect to work?</span>
+            <input type="text" class="form-control" name="email" placeholder="Hours">
+        </div>
+    </div><br>
+
+    <div class="col-xs-12 col-sm-6">
+        <div class="input-field name">
+            <span class= "input-icon" id="sSemester">Semester</span>
+            <select class="form-control" name="sSemester" id="sSemester" required>
+                <option value="">Semester</option>
+                <option value="Fall">Fall</option>
+                <option value="Winter">Winter</option>
+                <option value="Spring">Spring</option>
+                <option value="Summer">Summer</option>
+            </select>
+        </div>
+    </div><br>
+
+    <div class="col-xs-12 col-sm-6">
+        <div class="input-field name">
+            <span class= "input-icon" id="iYear">Year</span>
+            <select class="form-control" name="iYear" id="iYear" required>
+                <option value="">Year</option>
+                <option value="2022">2022</option>
+                <option value="2021">2021</option>
+                <option value="2020">2020</option>
+                <option value="2019">2019</option>
+            </select>
+        </div>
+    </div><br>
+
+
+
+    <div class="col-xs-12 col-sm-6">
+        <div class="input-field name">
+            <span class="btn-border">
+                <button type="submit" class="btn btn-primary btn-custom-border text-uppercase" onclick="alert('Student added!'); location.href='index.html'">Add Student</button>
+            </span>
+        </div>
+
+
+    </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </section>
 
@@ -93,3 +196,4 @@
   });
 </script>
  </body>
+ {%endblock%}
