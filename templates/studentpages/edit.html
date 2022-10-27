@@ -222,7 +222,7 @@
     <div class="col-xs-12 col-sm-6">
         <div class="input-field name">
             <span class= "input-icon" id="dDate">Hire Date</span>
-            <input type="date" class="form-control" name="dDate" placeholder="Hire Date" value="{{ Student.dDate }}">
+            <input type="date" class="form-control" name="dDate" value="{{ Student.dDate|date:'Y-m-d' }}">
         </div>
     </div><br>
 
@@ -236,7 +236,7 @@
     <div class="col-xs-12 col-sm-6">
         <div class="input-field name">
             <span class= "input-icon" id="dLastPayIncrease">Date of Last Pay Increase</span>
-            <input type="date" class="form-control" name="dLastPayIncrease" placeholder="\Date" value="{{ Student.dLastPayIncrease }}">
+            <input type="date" class="form-control" name="dLastPayIncrease" placeholder="Date" value="{{ Student.dLastPayIncrease|date:'Y-m-d' }}">
         </div>
     </div><br>
 
@@ -250,7 +250,7 @@
     <div class="col-xs-12 col-sm-6">
         <div class="input-field name">
             <span class= "input-icon" id="dIncreaseInput">Date of Increase Input</span>
-            <input type="date" class="form-control" name="dIncreaseInput" placeholder="Date" value="{{ Student.dIncreaseInput }}">
+            <input type="date" class="form-control" name="dIncreaseInput" placeholder="Date" value="{{ Student.dIncreaseInput|date:'Y-m-d' }}">
         </div>
     </div><br>
 
@@ -299,7 +299,7 @@
     <div class="col-xs-12 col-sm-6">
         <div class="input-field name">
             <span class= "input-icon" id="dTerminationDate">Termination Date</span>
-            <input type="date" class="form-control" name="dTerminationDate" placeholder="" value="{{ Student.dTerminationDate }}">
+            <input type="date" class="form-control" name="dTerminationDate" placeholder="" value="{{ Student.dTerminationDate|date:'Y-m-d' }}">
         </div>
     </div><br>
 
@@ -313,14 +313,14 @@
     <div class="col-xs-12 col-sm-6">
         <div class="input-field name">
             <span class= "input-icon" id="bSubmittedEForm">Have they submitted the E-Form? (True/False)</span>
-            <input type="text" class="form-control" name="bSubmittedEForm" placeholder="" value="{{ Student.first_name }}">
+            <input type="text" class="form-control" name="bSubmittedEForm" placeholder="" value="{{ Student.bSubmittedEForm }}">
         </div>
     </div><br>
 
     <div class="col-xs-12 col-sm-6">
         <div class="input-field name">
             <span class= "input-icon" id="dEFormSubmitted">E-Form Submission Date</span>
-            <input type="date" class="form-control" name="dEFormSubmitted" placeholder="" value="{{ Student.dEFormSubmitted }}">
+            <input type="date" class="form-control" name="dEFormSubmitted" placeholder="" value="{{ Student.dEFormSubmitted|date:'Y-m-d' }}">
         </div>
     </div><br>
 
@@ -334,7 +334,7 @@
     <div class="col-xs-12 col-sm-6">
         <div class="input-field name">
             <span class= "input-icon" id="dAuthorizationWorkEmailSent">Date that email was sent</span>
-            <input type="date" class="form-control" name="dAuthorizationWorkEmailSent" placeholder="" value="{{ Student.dAuthorizationWorkEmailSent }}">
+            <input type="date" class="form-control" name="dAuthorizationWorkEmailSent" placeholder="" value="{{ Student.dAuthorizationWorkEmailSent|date:'Y-m-d' }}">
         </div>
     </div><br>
 
